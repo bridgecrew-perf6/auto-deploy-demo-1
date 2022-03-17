@@ -1,0 +1,17 @@
+
+
+language: node_js
+node_js:
+  - '12'
+services:
+  - docker
+
+before_install:
+  - yarn install
+  - yarn add -g parcel-bundler
+
+script:
+  - parcel build ./index.js
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t liuyu666/auto-deploy-demo:latest .
+  - docker push liuyu666/auto-deploy-demo:latest
