@@ -1,4 +1,6 @@
-FROM nginx
-COPY ./index.html /usr/share/nginx/html/
-COPY ./dist /usr/share/nginx/html/dist
-EXPOSE 80
+FROM  node 
+ADD . /app/
+EXPOSE 3000
+WORKDIR /app
+RUN yarn install
+CMD ["node","./index.js"]
