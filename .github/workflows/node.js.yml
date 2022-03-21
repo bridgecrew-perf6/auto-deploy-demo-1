@@ -39,4 +39,4 @@ jobs:
             host: ${{ secrets.SSH_HOST }} 
             username: ${{ secrets.SSH_USERNAME }}
             password: ${{ secrets.SSH_PASSWORD }}
-            script: cd ~ && sh ly-docker-deploy.sh ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
+            #script: cd ~ && sh ly-docker-deploy.sh ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }}
