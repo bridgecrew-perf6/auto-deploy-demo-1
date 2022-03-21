@@ -29,7 +29,7 @@ jobs:
 
     # 打包镜像推送到阿里云容器镜像服务
     - name: Build the Docker image
-    - run: |
+    - run:
       docker login --username=${{ secrets.DOCKER_USERNAME }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PASSWORD }}
       docker build -t ly-docker:latest .
       docker tag ly-docker registry.cn-hangzhou.aliyuncs.com/liuyu666/ly-docker:latest
