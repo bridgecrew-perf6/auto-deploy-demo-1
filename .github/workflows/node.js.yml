@@ -28,7 +28,6 @@ jobs:
     - run: yarn run build --if-present
 
     # 打包镜像推送到阿里云容器镜像服务
-    - name: Build the Docker image
     - run:
       docker login --username=2319744619@qq.com registry.cn-hangzhou.aliyuncs.com
       docker build -t ly-docker:latest .
