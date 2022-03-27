@@ -41,11 +41,10 @@ jobs:
     - run: yarn run build --if-present
 
     # 打包镜像推送到阿里云容器镜像服务
-    - run: |
-      docker login --username=${{ secrets.DOCKER_USERNAME }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PASSWORD }}
-      docker build -t ly-docker:latest .
-      docker tag ly-docker registry.cn-hangzhou.aliyuncs.com/liuyu666/ly-docker:latest
-      docker push registry.cn-hangzhou.aliyuncs.com/liuyu666/ly-docker:latest # 推送
+    - run: docker login --username=${{ secrets.DOCKER_USERNAME }} registry.cn-hangzhou.aliyuncs.com --password=${{ secrets.DOCKER_PASSWORD }}
+    - run: docker build -t ly-docker:latest .
+    - run: docker tag ly-docker registry.cn-hangzhou.aliyuncs.com/liuyu666/ly-docker:latest
+    - run: docker push registry.cn-hangzhou.aliyuncs.com/liuyu666/ly-docker:latest # 推送
     - name: ssh docker login # 使用appleboy/ssh-action@master登录服务器执行拉取镜像脚本，服务器ip、用户名、密码配置方式同容器镜像服务配置方式一样
       uses: appleboy/ssh-action@master
       with:
